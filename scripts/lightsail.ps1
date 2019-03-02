@@ -4,8 +4,12 @@ Reference: LIGHTSAIL https://docs.aws.amazon.com/cli/latest/reference/lightsail/
 #>
 exit #PREVENT F5
 
+
+aws lightsail help
 #What blueprints (aka images) are available?
 aws lightsail get-blueprints 
+aws lightsail get-blueprints --output table
+
 #Note queries are picky, case sensitive
 aws lightsail get-blueprints --query 'blueprints[*].[blueprintId,type,platform,name,version]'
 aws lightsail get-blueprints --query 'blueprints[*].[blueprintId,type,platform,name,version]' --output table
@@ -14,6 +18,7 @@ aws lightsail get-blueprints --query 'blueprints[*].[blueprintId,type,platform,n
 #What bundles(aka sizes) are available?
 aws lightsail get-bundles
 aws lightsail get-bundles --query 'bundles[*].[bundleId,price,cpuCount,ramSizeInGb,diskSizeInGb]'
+aws lightsail get-bundles --query 'bundles[*].[bundleId,price,cpuCount,ramSizeInGb,diskSizeInGb]' --output table
 aws lightsail get-bundles --query 'bundles[*].[bundleId,price,cpuCount,ramSizeInGb,diskSizeInGb]' --output table
 
 #what availability zones are available?

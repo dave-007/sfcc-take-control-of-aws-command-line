@@ -24,5 +24,5 @@ foreach ($name in $names) {
     $text = "`'Hi, I am $name`'"
     $command = "aws polly synthesize-speech --output-format mp3 --voice-id $name --text $text ..\media\hi-from-$name.mp3"
     Invoke-Expression $command    
-
+    #todo test with fmedia. cinst fmedia ; fmedia path ..\media\hi-from-$name.mp3
 }
