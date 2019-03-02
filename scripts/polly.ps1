@@ -4,6 +4,7 @@ Reference: https://docs.aws.amazon.com/cli/latest/reference/polly
 
 #>
 exit #PREVENT F5
+aws polly help
 #confirm correct path so can access mp3s
 Set-Location .\scripts
 aws polly synthesize-speech `
@@ -16,7 +17,7 @@ Invoke-Expression ..\media\welcome.mp3
 
 aws polly describe-voices --language-code en-US
 #use json in a powershell variable and loop
-aws polly describe-voices --language-code en-US --query 'Voices[*].[Name]'
+aws polly describe-voices --language-code en-US --query 'Voices[*].[Name]' --output table
 $names = aws polly describe-voices --language-code en-US --query 'Voices[*].[Name]' | ConvertFrom-Json
 
 # assumes path to write mp3 is ..\media, change this as needed
