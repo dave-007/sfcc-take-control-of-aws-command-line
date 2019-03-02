@@ -1,42 +1,48 @@
 <#
 Before you begin, create a new IAM user for AWSCLI, with enough rights
 Note the access key and secret
+See: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console
 #>
-#fix python bug 'LookupError: unknown encoding: cp65001' per https://stackoverflow.com/questions/35176270/python-2-7-lookuperror-unknown-encoding-cp65001
+exit #PREVENT F5
 
 aws
 aws --version
 #note the various options 
-aws help   
-aws help topics    
+aws help     
+aws help topics  
+aws help config-vars  
 
 #configure, see https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
-aws configure help
-aws configure
+aws configure help 
+aws configure list
 aws configure --profile david1
 
 
 #profiles? 
 aws configure list
 aws configure get profile
-aws configure set profile david1
 cat ~/.aws/config
 
 
 
 
-#IAM
-aws iam get-user
-aws iam get-account-summary --output
-#get aws account number
+#IAM, Identity & Access Management
+#HUGE TOPIC, see https://docs.aws.amazon.com/cli/latest/reference/iam
+
+#get my user info
+aws iam get-user 
+#view --debug output
+aws iam get-user --debug
+#change the output format
+aws iam get-user --output json
+aws iam get-user --output table
+aws iam get-user --output text
+
+
+
+aws iam get-user --output table
+aws iam get-account-summary --output table
+#get aws account number with a --query
+aws sts get-caller-identity 
 aws sts get-caller-identity --output text --query 'Account'
 
-#instance profile?
-
-#try to read metadata from that instance
-curl http://169.254.169.254/latest/meta-data/
-
-#BUDGET & COST
-aws ce get-cost-and-usage
-#TODO
-#jmespath

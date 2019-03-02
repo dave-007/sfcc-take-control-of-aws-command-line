@@ -4,6 +4,7 @@ Reference: S3 https://docs.aws.amazon.com/cli/latest/reference/s3/index.html
 S3API https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html
 #>
 exit #PREVENT F5
+
 aws s3 help
 aws s3 ls
 aws s3 website help
